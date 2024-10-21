@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+db.sqlite3
+.vscode/
+*.pyo
+*.db
+.DS_Store
+/static
+/media
+.env
+secret_key.txt
