@@ -8,4 +8,5 @@ db.sqlite3
 /static
 /media
 secret_key.txt
-retail_project/sales/migrations
+/retail_project/sales/migrations/*.py
+/retail_project/sales/migrations/__pycache__/
