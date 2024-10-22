@@ -40,19 +40,34 @@ import environ
 
 # Initialize environ
 env = environ.Env()
-# Read .env file, assuming it's in the same directory as manage.py
-env.read_env(env.str('BASE_DIR', default=Path(__file__).resolve().parent.parent / '.env'))
+
+# Define the base directory path
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Read .env file, converting Path object to string
+env_file = str(BASE_DIR / '.env')
+env.read_env(env_file)
 
 # Set secret key using django-environ
 SECRET_KEY = env('SECRET_KEY', default='Optional-Default-Secret-Key')  # Only in development!
 
+# Set debug mode using django-environ
 DEBUG = env.bool('DEBUG', default=False)
+
+# Set allowed hosts using django-environ
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+
 # Set database configuration using django-environ
 DATABASES = {
-    'default': env.db()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+    }
 }
-print(env('DATABASE_URL'))  # This will print the DATABASE_URL to your console
 
 
 # Application definition
