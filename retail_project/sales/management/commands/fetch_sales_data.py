@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
             # Loop through each row in the results
             for row in rows:
-                """For each row, update or create a SalesSummary object in Django's database
+                """For each row, update or create a SalesSummary object in Django's database,
                 'update_or_create' tries to find a SalesSummary object with a matching
                 product_name and category. If it exists, it updates it with the new total_sales.
                 If it doesn't exist, it creates a new object with the provided fields."""
