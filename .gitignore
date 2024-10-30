@@ -10,3 +10,4 @@ db.sqlite3
 secret_key.txt
 retail_project/sales/migrations/*.py
 retail_project/sales/migrations/__pycache__/
+retail-env
